@@ -48,20 +48,62 @@ func count(nodeHead *Node) {
 	return
 }
 
+// elem->end
+func altura(elem *Node, nodeHead *Node) {
+	var altura uint
+
+	for nodeHead != nil {
+		if (elem == nodeHead || altura != 0) && (nodeHead.next != nil) {
+			// PRECISARIA INICIAR A CONTAGEM ATÉ O FINAL do for
+			altura++
+		}
+
+		nodeHead = nodeHead.next
+	}
+
+	fmt.Println(altura)
+}
+
+func profundidade(elem *Node, nodeHead *Node) {
+	var profundidade uint
+
+	for nodeHead != nil {
+		if elem == nodeHead {
+			break
+		}
+		// CASO SEJA DIFERENTE VAI INCREMENTANDO
+		profundidade++
+		nodeHead = nodeHead.next
+	}
+
+	fmt.Println(profundidade)
+}
+
 func main() {
-	n4 := Node{content: "quarto elemento", next: nil}
+	n6 := Node{content: "sexto elemento", next: nil}
+	n5 := Node{content: "quinto elemento", next: &n6}
+	n4 := Node{content: "quarto elemento", next: &n5}
 	n3 := Node{content: "terceiro elemento", next: &n4}
 	n2 := Node{content: "segundo elemento", next: &n3}
 	n1 := Node{content: "primeiro elemento", next: &n2}
-	
+
 	addLast("last item", &n1)
 	n1.ToString()
 
-	fmt.Println("##################################")
+	fmt.Println("######## REMOVE LAST ##########")
 
 	removeLast(&n1)
 	n1.ToString()
 
-	fmt.Println("##################################")
+	fmt.Println("######## COUNT ##########")
+
 	count(&n1)
+
+	fmt.Println("######## ALTURA ##########")
+
+	altura(&n2, &n1)
+
+	fmt.Println("######## PROFUNDIDADE ##########")
+
+	profundidade(&n2, &n1)
 }

@@ -1,0 +1,15 @@
+for i, number := range array {
+	fmt.Println(&number)
+	fmt.Println(
+		uintptr(unsafe.Pointer(&number)),
+		uintptr(unsafe.Pointer(&i)),
+		i,
+		number,
+	)
+}
+
+fmt.Println(uintptr(unsafe.Pointer(&array[0])), array[0])
+fmt.Println(uintptr(unsafe.Pointer(&array[1])), array[1])
+address := uintptr(unsafe.Pointer(&array[0]))
+address1 := uintptr(unsafe.Pointer(&array[1]))
+fmt.Printf("Tamanho em bits - %d\n", address1 - address)

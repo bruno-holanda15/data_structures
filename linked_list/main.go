@@ -54,6 +54,7 @@ func altura(elem *Node, nodeHead *Node) {
 
 	for nodeHead != nil {
 		if (elem == nodeHead || altura != 0) && (nodeHead.next != nil) {
+			println(nodeHead.content)
 			// PRECISARIA INICIAR A CONTAGEM ATÉ O FINAL do for
 			altura++
 		}
@@ -69,6 +70,7 @@ func profundidade(elem *Node, nodeHead *Node) {
 
 	for nodeHead != nil {
 		if elem == nodeHead {
+			println(nodeHead.content)
 			break
 		}
 		// CASO SEJA DIFERENTE VAI INCREMENTANDO
@@ -101,7 +103,7 @@ func main() {
 
 	fmt.Println("######## ALTURA ##########")
 
-	altura(&n2, &n1)
+	altura(&n3, &n1)
 
 	fmt.Println("######## PROFUNDIDADE ##########")
 

@@ -36,7 +36,7 @@ func removeLast(nodeHead *Node) {
 	removeLast(nodeHead.next)
 }
 
-func count(nodeHead *Node) {
+func count(nodeHead *Node) int{
 	qty := 1
 
 	for nodeHead.next != nil {
@@ -44,17 +44,16 @@ func count(nodeHead *Node) {
 		qty++
 	}
 
-	fmt.Println(qty)
-	return
+	return qty
 }
 
 // elem->end
-func altura(elem *Node, nodeHead *Node) {
-	var altura uint
+func altura(elem *Node, nodeHead *Node) int{
+	var altura int
 
 	for nodeHead != nil {
 		if (elem == nodeHead || altura != 0) && (nodeHead.next != nil) {
-			println(nodeHead.content)
+			// println(nodeHead.content)
 			// PRECISARIA INICIAR A CONTAGEM ATÉ O FINAL do for
 			altura++
 		}
@@ -62,15 +61,16 @@ func altura(elem *Node, nodeHead *Node) {
 		nodeHead = nodeHead.next
 	}
 
-	fmt.Println(altura)
+	return altura
 }
 
-func profundidade(elem *Node, nodeHead *Node) {
-	var profundidade uint
+//começo->elem
+func profundidade(elem *Node, nodeHead *Node) int {
+	var profundidade int
 
 	for nodeHead != nil {
 		if elem == nodeHead {
-			println(nodeHead.content)
+			// println(nodeHead.content)
 			break
 		}
 		// CASO SEJA DIFERENTE VAI INCREMENTANDO
@@ -78,7 +78,7 @@ func profundidade(elem *Node, nodeHead *Node) {
 		nodeHead = nodeHead.next
 	}
 
-	fmt.Println(profundidade)
+	return profundidade
 }
 
 func main() {
@@ -99,13 +99,13 @@ func main() {
 
 	fmt.Println("######## COUNT ##########")
 
-	count(&n1)
+	fmt.Printf("Lista com %d Elementos\n", count(&n1))
 
-	fmt.Println("######## ALTURA ##########")
+	// fmt.Println("######## ALTURA ##########")
 
-	altura(&n3, &n1)
+	// altura(&n3, &n1)
 
-	fmt.Println("######## PROFUNDIDADE ##########")
+	// fmt.Println("######## PROFUNDIDADE ##########")
 
-	profundidade(&n2, &n1)
+	// profundidade(&n2, &n1)
 }

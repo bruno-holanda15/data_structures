@@ -2,21 +2,35 @@ package main
 
 import "fmt"
 
+// const maxStackSize uint = 100
 type Stack struct {
+	// items [maxStackSize]uint
 	items []uint
 }
 
 // adiciona por último
-func(s *Stack) add(item uint) {
-	s.items = append(s.items, item)
+func(s *Stack) push(item uint) {
+	tamanho := len(s.items)
+
+	newStack := make([]uint, tamanho + 1)
+	for index, content := range s.items {
+		newStack[index] = content
+	}
+
+	newStack[tamanho] = item
+	s.items = newStack
 }
 
-// sempre remove o último
-func(s *Stack) remove() {
+// sempre remove(pop) o último
+func(s *Stack) pop() uint{
 	lenght := len(s.items)
 
 	var emptySlice []uint
+	var elementPopped uint = s.items[lenght-1]
+
 	s.items = append(emptySlice, s.items[:lenght-1]...)
+
+	return elementPopped
 }
 
 func(s *Stack) itemsPrint() {
@@ -34,20 +48,13 @@ func(s *Stack) peek() {
 func main() {
 	pilha := Stack{items: []uint{1,3,4,5,6,7,8}}
 	pilha.itemsPrint()
-	pilha.peek()
 
-	pilha.remove() // remove o 8
+	fmt.Println(pilha.pop()) // remove o 8
 	pilha.itemsPrint()
-	pilha.peek()
 
-
-	pilha.remove() // remove o 7
+	fmt.Println(pilha.pop()) // remove o 7
 	pilha.itemsPrint()
-	pilha.peek()
 
-
-	pilha.add(21)  //adiciona o 21
+	pilha.push(21)  //adiciona o 21
 	pilha.itemsPrint()
-	pilha.peek()
-
 }

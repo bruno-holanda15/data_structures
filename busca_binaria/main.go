@@ -10,7 +10,7 @@ func main() {
 	listNames := generateRandomNames()
 	// fmt.Println(listNames)
 
-	nomeProcurado := "Jorf"
+	nomeProcurado := "Juliana"
 	
 	inicio := 0
 	fim := len(listNames) - 1
